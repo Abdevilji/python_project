@@ -1,0 +1,312 @@
+
+
+ScreenManager:
+    SignUpScreen:
+    LoginScreen:
+    ProfileScreen:
+    Mainscreen:
+    Fscreenone:
+	sportscreen:
+	mscreen:
+    sportscreentwo:
+    mscreentwo:
+
+
+<SignUpScreen>:
+    name: 'sign'
+
+    Label:
+        text: 'Signup!'
+        font_size: (self.height/15)*1
+        pos_hint:{'center_x':0.48, 'center_y': 0.9}
+
+    Label:
+        text: 'Username'  
+        font_size: (self.height/15)* 0.85
+        pos_hint:{'center_x':0.25, 'center_y':0.7}
+
+    TextInput:
+        id: signupusername
+        text: ''
+        size_hint: 0.25, 0.05
+        pos_hint:{'center_x':0.48,'center_y':0.7}    
+
+    Label:
+        text: 'password'
+        font_size: (self.height/15)* 0.85
+        pos_hint: {'center_x':0.25, 'center_y':0.6}  
+
+    TextInput:
+        id:signuppassword
+        text: ''
+        size_hint: 0.25, 0.05
+        pos_hint: {'center_x': 0.48, 'center_y': 0.6}    
+        password: True
+
+
+    Button:
+        text: 'Sign up'
+        size_hint: .2,.1
+        pos_hint:{'center_x': 0.48, 'center_y': 0.45}    
+        on_press: root.signup()
+
+    Label:
+        text:'Signed Up?'    
+        font_size: (self.height/15) * 0.85
+        pos_hint: {'center_x': 0.25, 'center_y': 0.25}   
+
+    Button:
+        text: 'Login'
+        size_hint: .2,.1
+        pos_hint:{'center_x': 0.48, 'center_y': 0.25}    
+        on_press: root.manager.current = 'Login'  
+
+    Label:
+        text:root.signuperror   
+        font_size: (self.height/15) * 0.85
+        pos_hint: {'center_x': 0.35, 'center_y': 0.15}     
+
+
+<LoginScreen>:
+    name: 'Login'
+
+    Label:
+        text: 'Login!'
+        font_size: (self.height/15)*1
+        pos_hint:{'center_x':0.48, 'center_y': 0.9}
+
+    Label:
+        text: 'Username'  
+        font_size: (self.height/15)* 0.85
+        pos_hint:{'center_x':0.25, 'center_y':0.7}
+
+    TextInput:
+        id: loginusername
+        text: ''
+        size_hint: 0.25, 0.05
+        pos_hint:{'center_x':0.48,'center_y':0.7}    
+
+    Label:
+        text: 'password'
+        font_size: (self.height/15)* 0.85
+        pos_hint: {'center_x':0.25, 'center_y':0.6}  
+
+    TextInput:
+        id:loginpassword
+        text: ''
+        size_hint: 0.25, 0.05
+        pos_hint: {'center_x': 0.48, 'center_y': 0.6}    
+        password: True
+
+
+    Button:
+        text: 'Login'
+        size_hint: .2,.1
+        pos_hint:{'center_x': 0.48, 'center_y': 0.45}    
+        on_press: root.login()
+
+    Label:
+        text:'Not Signed Up?'    
+        font_size: (self.height/15) * 0.85
+        pos_hint: {'center_x': 0.2, 'center_y': 0.25}   
+
+    Button:
+        text: 'Sign up'
+        size_hint: .2,.1
+        pos_hint:{'center_x': 0.48, 'center_y': 0.25}    
+        on_press: root.manager.current = 'sign'  
+
+
+    Label:
+        text:root.loginerror   
+        font_size: (self.height/15) * 0.85
+        pos_hint: {'center_x': 0.35, 'center_y': 0.15}     
+
+# <ProfileScreen>:
+#     name: 'Profile'
+
+#     Label:
+#         # root.manager.current='first'
+#         text: 'Logged In'    
+#         font_size: (self.height/15)*1
+#         pos_hint:{'center_x': 0.5, 'center_y': 0.9}
+
+#     Button:
+#         text: 'Sign Out'
+#         size_hint: .1,.05
+#         # pos_hint:{'center_x': 0.48, 'center_y': 0.45}    
+#         pos_hint:{'right' : 0.75, 'top ' : .5}
+#         on_press: root.manager.current = 'sign'   
+<Mainscreen>:
+
+	name: "Profile"
+        
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+
+        spacing:20
+
+        Button:
+            text: "Faculty"
+            size_hint: .4,.5
+            on_release:
+                app.root.current="second"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Sports"
+            size_hint: .4,.5
+            on_release:
+                app.root.current="gamesecond"
+                root.manager.transition.direction = "left"	
+        Button:
+            text: "Mess"
+            size_hint: .4,.5
+            on_release:
+                app.root.current="messsecond"
+                root.manager.transition.direction = "left"
+        Button:
+            text: 'Sign Out'
+            size_hint: .1,.05
+            # pos_hint:{'center_x': 0.48, 'center_y': 0.45}
+            pos_hint:{'center_x' : .6, 'center_y ' : .5}
+            on_release: app.root.current = 'sign'
+        Button:
+            text: "clubs"
+            size_hint: .4,.5
+
+<Fscreenone>:
+	name: "second"
+
+	BoxLayout:
+		orientation: "vertical"
+		spacing: 20
+		Button: 
+			text:"CSE"
+		Button: 
+			text:"CSY"
+		Button: 
+			text:"ECE"
+		Button:
+			text: "Go Back"
+			font_size: 32
+			on_release: 
+				app.root.current = "Profile"
+				root.manager.transition.direction = "right"
+<sportscreen>:
+	name: "gamesecond"
+	BoxLayout:
+		orientation: "vertical"
+		spacing: 20
+		Button: 
+			text:"Cricket"
+		Button: 
+			text:"Football"
+		Button: 
+			text:"Table-Tannis"
+			
+		Button: 
+			text:"Volleyball"
+			
+		Button: 
+			text:"Badminton"
+		Button:
+			text: "Go Back"
+			font_size: 32
+			on_release: 
+				app.root.current = "Profile"
+				root.manager.transition.direction = "right"	
+# <sportscreentwo>:
+# 	name: "gamethird"
+# 	BoxLayout:
+# 		orientation: "vertical"
+# 		spacing: 20
+# 		Button: 
+# 			text:"Cricket"
+# 		Button: 
+# 			text:"Football"
+# 		Button: 
+# 			text:"Table-Tannis"
+			
+# 		Button: 
+# 			text:"Volleyball"
+			
+# 		Button: 
+# 			text:"Badminton"
+# 		Button:
+# 			text: "Go Back"
+# 			font_size: 32
+# 			on_release: 
+# 				app.root.current = "gamesecond"
+# 				root.manager.transition.direction = "right"	
+
+<mscreen>:
+	name:"messsecond"
+	BoxLayout:
+		orientation: "vertical"
+		spacing: 20
+		Button: 
+			text:"Monday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+		Button: 
+			text:"Tuesday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+
+		Button: 
+			text:"Wednesday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+			
+		Button: 
+			text:"Thursday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+			
+		Button: 
+			text:"Friday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+		Button:
+			text:"Saturday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+		Button:
+			text:"Sunday"
+            on_release: 
+				app.root.current = "messthird"
+				root.manager.transition.direction = "right"
+		Button:
+			text: "Go Back"
+			font_size: 32
+			on_release: 
+				app.root.current = "Profile"
+				root.manager.transition.direction = "right"
+
+<mscreentwo>:
+	name:"messthird"
+	BoxLayout:
+		orientation: "vertical"
+		spacing: 20
+		Button: 
+			text:"Breakfast"
+            pos_hint:{'center_x' : .5}
+		Button: 
+			text:"Lunch"
+            pos_hint:{'center_x' : .5}
+		Button: 
+			text:"Dinner"
+            pos_hint:{'center_x' : .5}
+		Button:
+			text: "Go Back"
+			font_size: 32
+			on_release: 
+				app.root.current = "messsecond"
+				root.manager.transition.direction = "right"
